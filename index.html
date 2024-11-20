@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Report Card Generator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="report-card.png">
+</head>
+<body>
+    <div class="dark-mode-toggle">
+        <!-- Dark Mode Toggle -->
+        <label class="switch">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider round"></span>
+        </label>
+    </div>
+    <div class="container">
+        <h1>Report Card Generator</h1>
+
+        <form id="reportCardForm">
+            <label for="studentName">Student Name:</label>
+            <input type="text" id="studentName" required>
+
+            <label for="subject1">English Marks:</label>
+            <input type="number" id="subject1" min="0" max="100" required>
+
+            <label for="subject2">Physics Marks:</label>
+            <input type="number" id="subject2" min="0" max="100" required>
+
+            <label for="subject3">Chemistry Marks:</label>
+            <input type="number" id="subject3" min="0" max="100" required>
+
+            <label for="subject4">Mathematics Marks:</label>
+            <input type="number" id="subject4" min="0" max="100" required>
+
+            <label for="subject5">Computer programming Marks:</label>
+            <input type="number" id="subject5" min="0" max="100" required>
+
+            <button type="submit">Generate Report Card</button>
+        </form>
+
+        <div id="reportCard" class="hidden">
+            <h2>Report Card</h2>
+            <p id="studentNameDisplay"></p>
+            <p id="marksDisplay"></p>
+            <p id="percentageDisplay"></p>
+            <p id="resultDisplay"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
