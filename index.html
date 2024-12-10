@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Report Card Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="icon" type="image/png" href="report-card.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>    <link rel="icon" type="image/png" href="report-card.png">
 </head>
+
 <body>
     <div class="dark-mode-toggle">
         <!-- Dark Mode Toggle -->
@@ -18,7 +20,7 @@
     <div class="container">
         <h1>Report Card Generator</h1>
 
-        <form id="reportCardForm">
+        <form id="reportCardForm" class="dark-mode">
             <label for="studentName">Student Name:</label>
             <input type="text" id="studentName" required>
 
@@ -34,10 +36,28 @@
             <label for="subject4">Mathematics Marks:</label>
             <input type="number" id="subject4" min="0" max="100" required>
 
-            <label for="subject5">Computer programming Marks:</label>
+            <label for="subject5">Computer Programming Marks:</label>
             <input type="number" id="subject5" min="0" max="100" required>
 
-            <button type="submit">Generate Report Card</button>
+            <label for="studentID">Student ID:</label>
+            <input type="text" id="studentID" required>
+
+            <label for="class">Class:</label>
+            <input type="text" id="class" required>
+
+            <label for="year">Year:</label>
+            <input type="text" id="year" required>
+
+            <label for="branch">Branch:</label>
+            <input type="text" id="branch" required>
+
+            <label for="semester">Semester:</label>
+            <input type="text" id="semester" required>
+
+            <label for="teacherRemarks">Teacher's Remarks:</label>
+            <textarea id="teacherRemarks" rows="4" required></textarea>
+
+            <button type="submit" id="submitButton">Generate Report Card</button>
         </form>
 
         <div id="reportCard" class="hidden">
@@ -51,4 +71,5 @@
 
     <script src="script.js"></script>
 </body>
+
 </html>
