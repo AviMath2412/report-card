@@ -1,75 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Report Card Generator</title>
+    <title>Modern Report Card Generator</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>    <link rel="icon" type="image/png" href="report-card.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="icon" type="image/png" href="report-card.png">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <div class="dark-mode-toggle">
-        <!-- Dark Mode Toggle -->
         <label class="switch">
             <input type="checkbox" id="themeToggle">
             <span class="slider round"></span>
         </label>
     </div>
+    
     <div class="container">
         <h1>Report Card Generator</h1>
 
-        <form id="reportCardForm" class="dark-mode">
-            <label for="studentName">Student Name:</label>
-            <input type="text" id="studentName" required>
+        <form id="reportCardForm" class="modern-form">
+            <!-- Student Information Section -->
+            <div class="form-section">
+                <h3>Student Information</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="studentName">Student Name</label>
+                        <input type="text" id="studentName" placeholder="Enter student's full name" required>
+                    </div>
 
-            <label for="subject1">English Marks:</label>
-            <input type="number" id="subject1" min="0" max="100" required>
+                    <div class="form-group">
+                        <label for="studentID">Student ID</label>
+                        <input type="text" id="studentID" placeholder="Enter student ID" required>
+                    </div>
 
-            <label for="subject2">Physics Marks:</label>
-            <input type="number" id="subject2" min="0" max="100" required>
+                    <div class="form-group">
+                        <label for="class">Class</label>
+                        <input type="text" id="class" placeholder="Enter class/grade" required>
+                    </div>
 
-            <label for="subject3">Chemistry Marks:</label>
-            <input type="number" id="subject3" min="0" max="100" required>
+                    <div class="form-group">
+                        <label for="year">Academic Year</label>
+                        <input type="text" id="year" placeholder="e.g., 2023-2024" required>
+                    </div>
 
-            <label for="subject4">Mathematics Marks:</label>
-            <input type="number" id="subject4" min="0" max="100" required>
+                    <div class="form-group">
+                        <label for="branch">Branch/Stream</label>
+                        <input type="text" id="branch" placeholder="e.g., Science, Commerce" required>
+                    </div>
 
-            <label for="subject5">Computer Programming Marks:</label>
-            <input type="number" id="subject5" min="0" max="100" required>
+                    <div class="form-group">
+                        <label for="semester">Semester</label>
+                        <input type="text" id="semester" placeholder="e.g., Fall, Spring, 1st" required>
+                    </div>
+                </div>
+            </div>
 
-            <label for="studentID">Student ID:</label>
-            <input type="text" id="studentID" required>
+            <!-- Academic Performance Section -->
+            <div class="form-section">
+                <h3>Academic Performance</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="subject1">English</label>
+                        <input type="number" id="subject1" min="0" max="100" placeholder="0-100" required>
+                    </div>
 
-            <label for="class">Class:</label>
-            <input type="text" id="class" required>
+                    <div class="form-group">
+                        <label for="subject2">Physics</label>
+                        <input type="number" id="subject2" min="0" max="100" placeholder="0-100" required>
+                    </div>
 
-            <label for="year">Year:</label>
-            <input type="text" id="year" required>
+                    <div class="form-group">
+                        <label for="subject3">Chemistry</label>
+                        <input type="number" id="subject3" min="0" max="100" placeholder="0-100" required>
+                    </div>
 
-            <label for="branch">Branch:</label>
-            <input type="text" id="branch" required>
+                    <div class="form-group">
+                        <label for="subject4">Mathematics</label>
+                        <input type="number" id="subject4" min="0" max="100" placeholder="0-100" required>
+                    </div>
 
-            <label for="semester">Semester:</label>
-            <input type="text" id="semester" required>
+                    <div class="form-group">
+                        <label for="subject5">Computer Programming</label>
+                        <input type="number" id="subject5" min="0" max="100" placeholder="0-100" required>
+                    </div>
+                </div>
+            </div>
 
-            <label for="teacherRemarks">Teacher's Remarks:</label>
-            <textarea id="teacherRemarks" rows="4" required></textarea>
+            <!-- Remarks Section -->
+            <div class="form-section">
+                <h3>Teacher's Assessment</h3>
+                <div class="form-group">
+                    <label for="teacherRemarks">Remarks</label>
+                    <textarea id="teacherRemarks" rows="4" placeholder="Add comments about student's performance" required></textarea>
+                </div>
+            </div>
 
-            <button type="submit" id="submitButton">Generate Report Card</button>
+            <div class="button-container">
+                <button type="submit" id="submitButton" class="generate-btn">
+                    Generate Report Card
+                    <span class="button-effect"></span>
+                </button>
+            </div>
         </form>
 
+        <!-- Modern Report Card Display -->
         <div id="reportCard" class="hidden">
-            <h2>Report Card</h2>
-            <p id="studentNameDisplay"></p>
-            <p id="marksDisplay"></p>
-            <p id="percentageDisplay"></p>
-            <p id="resultDisplay"></p>
+            <div class="report-header">
+                <h2>Academic Report Card</h2>
+                <div class="report-badge">Official</div>
+                <div class="report-meta">Generated on <span id="generationDate"></span></div>
+            </div>
+
+            <div class="report-content">
+                <div class="student-info">
+                    <div id="studentNameDisplay" class="info-item"></div>
+                    <div id="studentDetailsDisplay" class="info-grid"></div>
+                </div>
+
+                <div class="academic-performance">
+                    <h3>Performance Summary</h3>
+                    <div id="marksDisplay" class="marks-table"></div>
+                </div>
+
+                <div class="results-summary">
+                    <div id="percentageDisplay" class="result-item"></div>
+                    <div id="resultDisplay" class="result-item highlight"></div>
+                </div>
+
+                <div class="teacher-feedback">
+                    <h3>Teacher's Feedback</h3>
+                    <div id="remarksDisplay" class="remarks"></div>
+                </div>
+            </div>
+
+            <div class="report-actions">
+                <button id="downloadPDF" class="action-button">
+                    <span class="button-icon">📥</span>
+                    Download PDF
+                </button>
+                <button id="printReport" class="action-button">
+                    <span class="button-icon">🖨️</span>
+                    Print Report
+                </button>
+            </div>
+        </div>
+        
+        <div id="successMessage" class="success-message hidden">
+            <span class="success-icon">✓</span>
+            Report card generated successfully!
         </div>
     </div>
 
     <script src="script.js"></script>
 </body>
-
 </html>
